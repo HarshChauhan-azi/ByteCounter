@@ -36,9 +36,9 @@ public class HomeController : Controller
                                  .Select(i => cleanedInput.Substring(i * 2, 2))
                                  .ToList();
 
-        string crc = hexPairs.LastOrDefault();
+        string crc = hexPairs.LastOrDefault()!;
 
-        int totalCount = hexPairs.Count(); 
+        int totalCount = hexPairs.Count()!; 
 
         ViewBag.TotalCount = totalCount;
         ViewBag.Crc = crc;  
