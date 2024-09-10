@@ -1,0 +1,30 @@
+﻿<form method="post" asp-controller="Home" asp-action="CountHexValues">
+    <label for="hexInput">Enter Hex String:</label>
+    <input type="text" id="hexInput" name="hexInput" value="@ViewBag.InputHex" placeholder="Enter a string like CC AA 05 01 20 08 01 17 55 33" style="width: 400px;" />
+    <button type="submit">Count</button>
+</form>
+
+@if (ViewBag.TotalCount != null)
+{
+    <h3>Results:</h3>
+    <p>Total Count (excluding CC AA 55 33 and CRC): @ViewBag.TotalCount</p>
+    <p>CRC Value: @ViewBag.Crc</p>
+}
+
+@if (ViewBag.Message != null)
+{
+    <p style="color:red;">@ViewBag.Message</p>
+}
+
+<form method="post" asp-controller="Home" asp-action="GetPositionOfHexValue">
+    <label for="searchValue">Enter Hex Value to Find Position:</label>
+    <input type="text" id="searchValue" name="searchValue" value="@ViewBag.SearchValue" placeholder="Enter value like 20" style="width: 100px;" />
+    <input type="hidden" name="hexInput" value="@ViewBag.InputHex" /> 
+    <button type="submit">Get Position</button>
+</form>
+
+@if (ViewBag.PositionMessage != null)
+{
+    <h3>Position Search Results:</h3>
+    <p>@ViewBag.PositionMessage</p>
+}
